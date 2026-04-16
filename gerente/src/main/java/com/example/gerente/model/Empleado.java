@@ -9,4 +9,8 @@ import lombok.Data;
 @Entity
 public class Empleado {
     
+    private int run_emp;
+    private String nom_emp;
+    private String ape_emp;
+    private String correo_emp;
 }
