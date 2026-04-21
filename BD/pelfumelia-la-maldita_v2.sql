@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-04-2026 a las 18:03:12
+-- Tiempo de generación: 21-04-2026 a las 18:11:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,28 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `admin`
---
-
-CREATE TABLE `admin` (
-  `id_admin` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
-  `apellido` varchar(100) DEFAULT NULL,
-  `id_empleado` int(11) DEFAULT NULL,
-  `sueldo` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `admin`
---
-
-INSERT INTO `admin` (`id_admin`, `nombre`, `apellido`, `id_empleado`, `sueldo`) VALUES
-(1, 'Luis', 'Fernandez', 1, 750000),
-(2, 'Ana', 'Martinez', 3, 800000);
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `cliente`
 --
 
@@ -53,16 +31,8 @@ CREATE TABLE `cliente` (
   `id_cliente` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `apellido` varchar(100) DEFAULT NULL,
-  `id_tarjeta` int(11) DEFAULT NULL
+  `email` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `cliente`
---
-
-INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `id_tarjeta`) VALUES
-(1, 'Diego', 'Perez', 1),
-(2, 'Valentina', 'Lopez', 2);
 
 -- --------------------------------------------------------
 
@@ -72,39 +42,25 @@ INSERT INTO `cliente` (`id_cliente`, `nombre`, `apellido`, `id_tarjeta`) VALUES
 
 CREATE TABLE `cupon` (
   `id_cupon` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
+  `codigo` varchar(20) DEFAULT NULL,
+  `descuento` int(11) DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL
+  `fecha_expiracion` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `cupon`
---
-
-INSERT INTO `cupon` (`id_cupon`, `nombre`, `id_cliente`, `fecha`) VALUES
-(1, 'Descuento10', 1, '2026-04-10'),
-(2, 'Promo20', 2, '2026-04-12');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalle`
+-- Estructura de tabla para la tabla `detalle_venta`
 --
 
-CREATE TABLE `detalle` (
+CREATE TABLE `detalle_venta` (
   `id_detalle` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
-  `id_proveedor` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL
+  `id_venta` int(11) DEFAULT NULL,
+  `id_producto` int(11) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `precio_unitario_venta` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `detalle`
---
-
-INSERT INTO `detalle` (`id_detalle`, `nombre`, `id_proveedor`, `fecha`) VALUES
-(1, 'Compra Zapatillas', 1, '2026-04-10'),
-(2, 'Compra Polera', 2, '2026-04-12');
 
 -- --------------------------------------------------------
 
@@ -116,39 +72,24 @@ CREATE TABLE `empleado` (
   `id_empleado` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `apellido` varchar(100) DEFAULT NULL,
-  `id_admin` int(11) DEFAULT NULL
+  `sueldo` decimal(10,2) DEFAULT NULL,
+  `rol` varchar(20) DEFAULT NULL,
+  `id_tienda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `empleado`
---
-
-INSERT INTO `empleado` (`id_empleado`, `nombre`, `apellido`, `id_admin`) VALUES
-(1, 'Pedro', 'Soto', 1),
-(2, 'Camila', 'Rojas', 1),
-(3, 'Javier', 'Muñoz', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `gerente`
+-- Estructura de tabla para la tabla `perfume`
 --
 
-CREATE TABLE `gerente` (
-  `id_gerente` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
-  `apellido` varchar(100) DEFAULT NULL,
-  `id_admin` int(11) DEFAULT NULL,
+CREATE TABLE `perfume` (
+  `id_perfume` int(11) NOT NULL,
+  `nombre` varchar(30) DEFAULT NULL,
+  `propiedades` varchar(25) DEFAULT NULL,
+  `aroma` char(1) DEFAULT NULL,
   `id_tienda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `gerente`
---
-
-INSERT INTO `gerente` (`id_gerente`, `nombre`, `apellido`, `id_admin`, `id_tienda`) VALUES
-(1, 'Carlos', 'Gonzalez', 1, 1),
-(2, 'María', 'Rodriguez', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -159,17 +100,9 @@ INSERT INTO `gerente` (`id_gerente`, `nombre`, `apellido`, `id_admin`, `id_tiend
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
-  `id_cliente` int(11) DEFAULT NULL,
-  `id_tienda` int(11) DEFAULT NULL
+  `precio_venta` int(11) DEFAULT NULL,
+  `id_proveedor` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`id_producto`, `nombre`, `id_cliente`, `id_tienda`) VALUES
-(1, 'Zapatillas Nike', 1, 1),
-(2, 'Polera Adidas', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -180,17 +113,8 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `id_cliente`, `id_tienda`) VALU
 CREATE TABLE `proveedores` (
   `id_proveedor` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
-  `id_producto` int(11) DEFAULT NULL,
-  `id_tienda` int(11) DEFAULT NULL
+  `contacto` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `proveedores`
---
-
-INSERT INTO `proveedores` (`id_proveedor`, `nombre`, `id_producto`, `id_tienda`) VALUES
-(1, 'Nike Chile', 1, 1),
-(2, 'Adidas Chile', 2, 2);
 
 -- --------------------------------------------------------
 
@@ -200,16 +124,9 @@ INSERT INTO `proveedores` (`id_proveedor`, `nombre`, `id_producto`, `id_tienda`)
 
 CREATE TABLE `tarjetas` (
   `id_tarjeta` int(11) NOT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
   `tipo` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `tarjetas`
---
-
-INSERT INTO `tarjetas` (`id_tarjeta`, `tipo`) VALUES
-(1, 'D'),
-(2, 'C');
 
 -- --------------------------------------------------------
 
@@ -219,18 +136,9 @@ INSERT INTO `tarjetas` (`id_tarjeta`, `tipo`) VALUES
 
 CREATE TABLE `tienda` (
   `id_tienda` int(11) NOT NULL,
-  `id_gerente` int(11) DEFAULT NULL,
-  `id_proveedor` int(11) DEFAULT NULL,
-  `id_detalle` int(11) DEFAULT NULL
+  `nombre_tienda` varchar(100) DEFAULT NULL,
+  `ubicacion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `tienda`
---
-
-INSERT INTO `tienda` (`id_tienda`, `id_gerente`, `id_proveedor`, `id_detalle`) VALUES
-(1, 1, 1, 1),
-(2, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -240,28 +148,14 @@ INSERT INTO `tienda` (`id_tienda`, `id_gerente`, `id_proveedor`, `id_detalle`) V
 
 CREATE TABLE `venta` (
   `id_venta` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
-  `id_empleado` int(11) DEFAULT NULL,
-  `fecha` date DEFAULT NULL
+  `fecha_venta` date DEFAULT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_empleado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `venta`
---
-
-INSERT INTO `venta` (`id_venta`, `nombre`, `id_empleado`, `fecha`) VALUES
-(1, 'Venta Zapatillas', 1, '2026-04-10'),
-(2, 'Venta Polera', 2, '2026-04-12');
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indices de la tabla `cliente`
@@ -273,31 +167,37 @@ ALTER TABLE `cliente`
 -- Indices de la tabla `cupon`
 --
 ALTER TABLE `cupon`
-  ADD PRIMARY KEY (`id_cupon`);
+  ADD PRIMARY KEY (`id_cupon`),
+  ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Indices de la tabla `detalle`
+-- Indices de la tabla `detalle_venta`
 --
-ALTER TABLE `detalle`
-  ADD PRIMARY KEY (`id_detalle`);
+ALTER TABLE `detalle_venta`
+  ADD PRIMARY KEY (`id_detalle`),
+  ADD KEY `id_venta` (`id_venta`),
+  ADD KEY `id_producto` (`id_producto`);
 
 --
 -- Indices de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  ADD PRIMARY KEY (`id_empleado`);
+  ADD PRIMARY KEY (`id_empleado`),
+  ADD KEY `id_tienda` (`id_tienda`);
 
 --
--- Indices de la tabla `gerente`
+-- Indices de la tabla `perfume`
 --
-ALTER TABLE `gerente`
-  ADD PRIMARY KEY (`id_gerente`);
+ALTER TABLE `perfume`
+  ADD PRIMARY KEY (`id_perfume`),
+  ADD KEY `id_tienda` (`id_tienda`);
 
 --
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD PRIMARY KEY (`id_producto`);
+  ADD PRIMARY KEY (`id_producto`),
+  ADD KEY `id_proveedor` (`id_proveedor`);
 
 --
 -- Indices de la tabla `proveedores`
@@ -309,7 +209,8 @@ ALTER TABLE `proveedores`
 -- Indices de la tabla `tarjetas`
 --
 ALTER TABLE `tarjetas`
-  ADD PRIMARY KEY (`id_tarjeta`);
+  ADD PRIMARY KEY (`id_tarjeta`),
+  ADD KEY `id_cliente` (`id_cliente`);
 
 --
 -- Indices de la tabla `tienda`
@@ -321,7 +222,57 @@ ALTER TABLE `tienda`
 -- Indices de la tabla `venta`
 --
 ALTER TABLE `venta`
-  ADD PRIMARY KEY (`id_venta`);
+  ADD PRIMARY KEY (`id_venta`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_empleado` (`id_empleado`);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `cupon`
+--
+ALTER TABLE `cupon`
+  ADD CONSTRAINT `cupon_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`);
+
+--
+-- Filtros para la tabla `detalle_venta`
+--
+ALTER TABLE `detalle_venta`
+  ADD CONSTRAINT `detalle_venta_ibfk_1` FOREIGN KEY (`id_venta`) REFERENCES `venta` (`id_venta`),
+  ADD CONSTRAINT `detalle_venta_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
+
+--
+-- Filtros para la tabla `empleado`
+--
+ALTER TABLE `empleado`
+  ADD CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`id_tienda`) REFERENCES `tienda` (`id_tienda`);
+
+--
+-- Filtros para la tabla `perfume`
+--
+ALTER TABLE `perfume`
+  ADD CONSTRAINT `perfume_ibfk_1` FOREIGN KEY (`id_tienda`) REFERENCES `tienda` (`id_tienda`);
+
+--
+-- Filtros para la tabla `producto`
+--
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedores` (`id_proveedor`);
+
+--
+-- Filtros para la tabla `tarjetas`
+--
+ALTER TABLE `tarjetas`
+  ADD CONSTRAINT `tarjetas_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`);
+
+--
+-- Filtros para la tabla `venta`
+--
+ALTER TABLE `venta`
+  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),
+  ADD CONSTRAINT `venta_ibfk_2` FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
