@@ -32,4 +32,5 @@ public class Empleado {
     @ManyToOne
     @Column(name = "id_tienda", nullable = false)
     private Tienda id_tienda;
+    
 }

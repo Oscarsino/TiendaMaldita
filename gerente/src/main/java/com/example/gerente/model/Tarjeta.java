@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "tarjeta")
-@Table
+@Entity
+@Table(name = "tarjeta")
 public class Tarjeta {
 
     @Id

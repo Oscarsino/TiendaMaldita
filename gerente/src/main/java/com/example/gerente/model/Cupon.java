@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "cupon")
-@Table
+@Entity
+@Table(name = "cupon")
 public class Cupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
