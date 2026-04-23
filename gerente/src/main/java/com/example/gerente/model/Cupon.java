@@ -1,7 +1,8 @@
 package com.example.gerente.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,12 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "cliente")
+@Entity(name = "cupon")
 @Table
-public class Cliente {
-    @Id
-    private int id_cliente;
-    private String nombre;
-    private String apellido;
-    private String email;
+public class Cupon {
+    private int id_cupon;
+    private String codigo;
+    private int descuento;
+    private Date fecha_expiracion;
+    
+    private Cliente id_cliente;
 }
