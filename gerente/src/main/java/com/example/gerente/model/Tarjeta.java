@@ -14,21 +14,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "inventario")
+@Entity(name = "tarjeta")
 @Table
-public class Inventario {
+public class Tarjeta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "cantidad",nullable = false)
-    private int cantidad;
+    private int id_tarjeta;
+    @Column(name = "tipo",nullable = false)
+    private char tipo;
 
     @ManyToOne
-    @Column(name = "id_producto", nullable = false)
-    private Producto id_producto;
-
-    @ManyToOne
-    @Column(name = "id_tienda",nullable = false)
-    private Tienda id_tienda;
+    @Column(name = "id_cliente",nullable = false)
+    private Cliente id_cliente;
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,11 +19,17 @@ import lombok.NoArgsConstructor;
 public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int run_emp;
-    @Column(name = "nom_emp")
-    private String nom_emp;
-    @Column(name = "ape_emp")
-    private String ape_emp;
-    @Column(name = "sueldo")
-    private int sueldo;
+    private int id_empleado;
+    @Column(name = "nombre",nullable = false)
+    private String nombre;
+    @Column(name = "apellido",nullable = false)
+    private String apellido;
+    @Column(name = "sueldo",nullable = false)
+    private float sueldo; // decimal
+    @Column(name = "rol",nullable = false)
+    private String rol;
+
+    @ManyToOne
+    @Column(name = "id_tienda", nullable = false)
+    private Tienda id_tienda;
 }

@@ -1,5 +1,7 @@
 package com.example.gerente.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,24 +13,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
-@Entity(name = "inventario")
+@Entity(name = "cupon")
 @Table
-public class Inventario {
-
+public class Cupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "cantidad",nullable = false)
-    private int cantidad;
-
+    private int id_cupon;
+    @Column(name = "codigo",nullable = false)
+    private String codigo;
+    @Column(name = "descuento",nullable = false)
+    private int descuento;
+    @Column(name = "fecha_expiracion")
+    private Date fecha_expiracion;
+    
     @ManyToOne
-    @Column(name = "id_producto", nullable = false)
-    private Producto id_producto;
-
-    @ManyToOne
-    @Column(name = "id_tienda",nullable = false)
-    private Tienda id_tienda;
+    @Column(name = "id_cliente",nullable = false)
+    private Cliente id_cliente;
 }
