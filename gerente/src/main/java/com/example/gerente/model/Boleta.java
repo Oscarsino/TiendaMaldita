@@ -6,32 +6,23 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "detalle_venta")
+@Entity(name = "boleta")
 @Table
-public class DetalleVenta {
-
+public class Boleta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_detalle;
-    @Column(name = "cantidad",nullable = false)
-    private int cantidad; //` int(11) DEFAULT NULL,
-    @Column(name = "precio_unitario_venta")
-    private int precio_unitario_venta; //` int(11) DEFAULT NULL
-
-    @OneToMany
+    private int id_boleta;
+    @ManyToOne
+    @Column(name = "id_cliente",nullable = false)
+    private Cliente id_cliente;
+    @ManyToOne
     @Column(name = "id_venta",nullable = false)
     private Venta id_venta;
-    @ManyToOne
-    @Column(name = "id_producto",nullable = false)
-    private Producto id_producto;
-    
 }
