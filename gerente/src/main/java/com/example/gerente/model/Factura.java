@@ -1,21 +1,38 @@
 package com.example.gerente.model;
 
-public class Factura {
+import java.sql.Date;
 
-}
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/*
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Entity(name = "factura")
+@Table
 public class Factura {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private LocalDate fecha;
+    @Column(name = "fecha",nullable = false)
+    private Date fecha;
+    @Column(name = "total",nullable = false)
     private double total;
 
+    
     @OneToOne
+    @Column(name = "venta",nullable = false)
     private Venta venta;
+    @OneToOne
+    @Column(name = "id_cliente",nullable = false)
+    private Cliente id_cliente;
 }
-*/

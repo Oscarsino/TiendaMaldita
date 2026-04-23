@@ -22,8 +22,11 @@ public class Empleado {
     private int id_empleado;
     @Column(name = "nombre",nullable = false)
     private String nombre;
+    @Column(name = "apellido",nullable = false)
     private String apellido;
-    private int sueldo; // decimal
+    @Column(name = "sueldo",nullable = false)
+    private float sueldo; // decimal
+    @Column(name = "rol",nullable = false)
     private String rol;
 
     @ManyToOne

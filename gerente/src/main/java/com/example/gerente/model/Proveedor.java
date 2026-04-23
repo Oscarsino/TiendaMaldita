@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,21 +13,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity(name = "inventario")
+@Entity(name = "proveedor")
 @Table
-public class Inventario {
-
+public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "cantidad",nullable = false)
-    private int cantidad;
-
-    @ManyToOne
-    @Column(name = "id_producto", nullable = false)
-    private Producto id_producto;
-
-    @ManyToOne
-    @Column(name = "id_tienda",nullable = false)
-    private Tienda id_tienda;
+    private int id_proveedor;
+    @Column(name = "nombre",nullable = false)
+    private String nombre;
+    @Column(name = "contacto", nullable = false)
+    private String contacto;
 }
