@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,9 +31,9 @@ public class Factura {
 
     
     @OneToOne
-    @Column(name = "venta",nullable = false)
+    @JoinColumn(name = "venta",nullable = false)
     private Venta venta;
     @OneToOne
-    @Column(name = "id_cliente",nullable = false)
+    @JoinColumn(name = "id_cliente",nullable = false)
     private Cliente id_cliente;
 }

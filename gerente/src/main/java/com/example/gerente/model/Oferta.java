@@ -5,9 +5,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
+@Table(name = "oferta")
 public class Oferta {
 
     @Id
@@ -20,6 +29,6 @@ public class Oferta {
     private double descuento; // 0.1 = 10%
 
     @ManyToOne
-    @Column(name = "id_producto",nullable = false)
+    @JoinColumn(name = "id_producto",nullable = false)
     private Producto id_producto;
 }

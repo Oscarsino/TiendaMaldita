@@ -5,32 +5,28 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Table(name = "empleado")
 @Entity
-public class Empleado {
+@Table(name = "pago")
+public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_empleado;
-    @Column(name = "nombre",nullable = false)
-    private String nombre;
-    @Column(name = "apellido",nullable = false)
-    private String apellido;
-    @Column(name = "sueldo",nullable = false)
-    private float sueldo; // decimal
-    @Column(name = "rol",nullable = false)
-    private String rol;
+    private Long id_pago;
+    @Column(name = "monto",nullable = false)
+    private Double monto;
+    @Column(name = "metodo_pago",nullable = false)
+    private String metodo_pago;
 
     @ManyToOne
-    @Column(name = "id_tienda", nullable = false)
-    private Tienda id_tienda;
-    
+    @JoinColumn(name = "id_venta",nullable = false)
+    private Venta venta;
 }

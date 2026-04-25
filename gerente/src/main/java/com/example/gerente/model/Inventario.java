@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,10 +26,10 @@ public class Inventario {
     private int cantidad;
 
     @ManyToOne
-    @Column(name = "id_producto", nullable = false)
+    @JoinColumn(name = "id_producto", nullable = false)
     private Producto id_producto;
 
     @ManyToOne
-    @Column(name = "id_tienda",nullable = false)
+    @JoinColumn(name = "id_tienda",nullable = false)
     private Tienda id_tienda;
 }

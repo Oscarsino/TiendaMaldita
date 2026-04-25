@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -20,11 +21,11 @@ public class Tarjeta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_tarjeta;
+    private Long id_tarjeta;
     @Column(name = "tipo",nullable = false)
     private char tipo;
 
     @ManyToOne
-    @Column(name = "id_cliente",nullable = false)
+    @JoinColumn(name = "id_cliente",nullable = false)
     private Cliente id_cliente;
 }
