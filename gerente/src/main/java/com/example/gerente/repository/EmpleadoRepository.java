@@ -15,15 +15,26 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface EmpleadoRepository  extends JpaRepository<Empleado, Integer >{
     @Query ("SELECT e FROM Empleado e")
-    List <Empleado> findAll();
+    List <Empleado> findAll(); /*Listar todos los empleados */
 
     @Query ("SELECT e FROM Empleado e WHERE e.id_empleado =:id")
-    List<Empleado> findByRut(Integer id);
+    List<Empleado> findByRut(Integer id);/* Listar por id de empleado*/
 
     @Modifying
     @Transactional
     @Query("DELETE FROM Empleado e WHERE e.id_empleado =: id")
-    void deleteEmpleadoById( @Param("id")Integer id);
+    void deleteEmpleadoById( @Param("id")Integer id);/* Eliminar por el id*/
+
+
+    @Modifying
+    @Transactional
+    @Query ("UPDATE Empleado e SET e.nombre =:nombre,e.apellido =: apellido,e.sueldo =: sueldo,e.rol =:rol WHERE e.id_empleado =:id  ")
+             int updateEmpleado(@Param("id")Integer id); /* hacerlo con todos los datps que se quieran modificar, siguiendo la misma estructura:)*/
+                    
+
+    
+
+
 
 
   
