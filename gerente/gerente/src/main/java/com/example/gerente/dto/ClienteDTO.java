@@ -44,6 +44,6 @@ public class ClienteDTO {
         private String nombre;
         private String apellido;
         private String email;
-        private ClienteDTO genero; // Objeto obtenido consultando ms-genero
+        // private ClienteDTO genero; // CLAVEEEE FORANEAAA, 
     }
 }

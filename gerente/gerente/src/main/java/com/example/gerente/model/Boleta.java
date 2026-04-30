@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 public class Boleta {
     @NotNull(message = "El id no debe ser nulo")
     @NotEmpty(message = "el id no debe ser nulo")
+    @Min(value = 0)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_boleta;
