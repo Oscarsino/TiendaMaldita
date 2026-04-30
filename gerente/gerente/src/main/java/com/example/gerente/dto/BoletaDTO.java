@@ -11,7 +11,7 @@ public class BoletaDTO {
     public static class Request {
 
         @NotBlank(message = "El id es obligatorio")
-        @Size(min = 10, max = 12, message = "El id debe tener entre 2 y 12 caracteres")
+        @Min(value = 0)
         private int id_boleta;
 
     }
@@ -23,6 +23,6 @@ public class BoletaDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private Long id_boleta;
+        private int id_boleta;
     }
 }

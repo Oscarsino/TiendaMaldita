@@ -10,8 +10,8 @@ public class CiudadDTO {
     @AllArgsConstructor
     public static class Request {
 
-        @NotBlank(message = "El RUT es obligatorio")
-        @Size(min = 10, max = 12, message = "El RUT debe tener entre 10 y 12 caracteres")
+        @NotBlank(message = "El id de la ciudad es obligatorio")
+        @Min(value = 0)
         private int id_ciudad;
 
         @NotBlank(message = "El nombre es obligatorio")
@@ -21,17 +21,12 @@ public class CiudadDTO {
 
     }
 
-    /**
-     * La respuesta incluye el GeneroDTO completo obtenido desde ms-genero via Feign.
-     */
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private Long id;
-        private String rut;
+        private int id_ciudad;
         private String nombre;
-        private int edad;
-        private GeneroDTO genero; // Objeto obtenido consultando ms-genero
+
     }
 }
