@@ -1,3 +1,5 @@
+package com.example.gerente.dto;
+
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

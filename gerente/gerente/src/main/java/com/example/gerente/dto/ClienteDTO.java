@@ -1,3 +1,5 @@
+package com.example.gerente.dto;
+
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -39,8 +41,7 @@ public class ClienteDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private Long id;
-        private String rut;
+        private int id_cliente;
         private String nombre;
         private String apellido;
         private String email;

@@ -7,30 +7,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-public class EmpleadoDTO {
+public class ProveedorDTO {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Request {
 
-        @NotBlank(message = "El id del empleado es obligatorio")
-        @Min(value = 0)
-        private int  id_empleado;
+        @Min(value = 0, message = "El id del proveedor no puede ser negativo")
+        private int id_proveedor;
 
-        @NotBlank(message = "El nombre  es obligatorio")
+        @NotBlank(message = "El nombre del proveedor es obligatoria")
         @Pattern(regexp = "^[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}\\s+[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}.*$",
                  message = "El nombre debe contener al menos 2 palabras")
         private String nombre;
 
-        @NotBlank(message = "El apellido es obligatorio")
+        @NotBlank(message = "El contacto del proveedor es obligatoria")
         @Pattern(regexp = "^[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}\\s+[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}.*$",
-                 message = "El apellido debe contener al menos 2 palabras")
-        private String apellido;
-        
-        @NotBlank(message = "El sueldo del empleado es obligatorio")
-        @Min(value = 0)
-        private int  sueldo;
+                 message = "El nombre debe contener al menos 2 palabras")
+        private String contacto;
 
+        
     }
 
     /**
@@ -40,10 +36,8 @@ public class EmpleadoDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private int id_empleado;
+        private int id_proveedor;
         private String nombre;
-        private String apellido;
-        private int sueldo;
-        private TiendaDTO tienda; 
+        private String contacto;
     }
 }

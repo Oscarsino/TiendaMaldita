@@ -1,3 +1,5 @@
+package com.example.gerente.dto;
+
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,23 +12,14 @@ public class FacturaDTO {
     @AllArgsConstructor
     public static class Request {
 
-        @NotBlank(message = "El nombre es obligatorio")
-        @Pattern(regexp = "^[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}\\s+[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}.*$",
-                 message = "El nombre debe contener al menos 2 palabras")
-        private String nombre;
-
-        @NotBlank(message = "El apellido es obligatorio")
-        @Pattern(regexp = "^[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}\\s+[\\w\\sáéíóúÁÉÍÓÚñÑ]{2,}.*$",
-                 message = "El apellido debe contener al menos 2 palabras")
-        private String apellido;
-
         @Min(value = 0, message = "El id de la factura no puede ser negativo")
         private int id_factura;
 
+        @Min(value = 0, message = "La venta de la facatura no puede ser negativa")
+        private int venta;
+
         @Min(value = 0, message = "El total de la factura no puede ser negativo")
         private int total;
-
-        
     }
 
     /**
@@ -36,10 +29,10 @@ public class FacturaDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private int id_empleado;
-        private String apellido;
-        private String nombre;
-        private int edad;
-        private TiendaDTO tienda; // clave foranea
+        private int id_factura;
+        private int venta;
+        private int total;
+        private ClienteDTO cliente; // clave foranea
+        private VentaDTO venta; //clave foranea
     }
 }
