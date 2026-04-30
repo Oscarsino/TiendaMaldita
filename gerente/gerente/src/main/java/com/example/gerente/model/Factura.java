@@ -27,7 +27,7 @@ public class Factura {
     @Min(value = 0)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_factura;
     @Column(name = "fecha",nullable = false)
     private Date fecha;
     @Column(name = "total",nullable = false)

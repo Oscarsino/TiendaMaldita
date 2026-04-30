@@ -40,7 +40,6 @@ public class Cupon {
     @Min(value = 0)
     private int descuento;
     @Column(name = "fecha_expiracion")
-    /*Se debe validar el date? */
     private Date fecha_expiracion;
     /*Deben coincidir */
     @ManyToOne

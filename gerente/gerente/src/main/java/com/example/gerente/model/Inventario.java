@@ -25,7 +25,7 @@ public class Inventario {
     @Min(value = 0)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_inventario;
     @NotNull(message = "La Cantidad no debe ser nulo")
     @NotEmpty(message = "La Cantidad no debe ser nulo")
     @Min(value = 0)

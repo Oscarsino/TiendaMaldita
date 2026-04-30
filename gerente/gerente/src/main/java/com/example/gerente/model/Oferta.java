@@ -18,7 +18,7 @@ public class Oferta {
     @Min(value = 0)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int id_oferta;
     @Column(name = "descripcion",nullable = false)
     @NotEmpty
     @NotNull
