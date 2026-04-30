@@ -8,6 +8,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,20 +22,20 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "rol")
 public class Rol {
+    
+    @NotNull(message = "El id no debe ser nulo")
+    @NotEmpty(message = "el id no debe ser nulo")
+    @Min(value = 0)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id_rol;
     @Column(name = "nombre",nullable = false)
-    private String nombre;
-    @Column(name = "descripcion",nullable = false)
-    private String descripcion;
-
+    @NotEmpty
+    @NotNull
+    @Size(min = 2, max = 50, message = "Error nombre no valido")
+    private String nombre_rol;
     @ManyToOne
-    @JoinColumn(name = "id_usuario",nullable = false)
-    private Usuario id_usuario;
-
-    @ManyToOne
-    @JoinColumn(name = "id_permiso",nullable = false)
-    private Permisos id_permiso;
+    @JoinColumn(name = "id_empleado", nullable = false)
+    private Empleado id_empleado;
 
 }

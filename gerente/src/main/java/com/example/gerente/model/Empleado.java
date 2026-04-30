@@ -21,20 +21,31 @@ import lombok.NoArgsConstructor;
 @Valid
 @Data
 @Entity
-@Table(name = "ciudad")
-public class Ciudad {
+@Table(name = "empleado")
+// clase para identificar el Administrador, Empleado, Gerente por rol 
+public class Empleado {
     @NotNull(message = "El id no debe ser nulo")
     @NotEmpty(message = "el id no debe ser nulo")
     @Min(value = 0)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_ciudad;
+    private int id_empleado;
     @Column(name = "nombre",nullable = false)
     @NotEmpty
     @NotNull
-    @Size(min = 2, max = 50, message = "Error nombre no valido")
+    @Size(min = 2, max = 100, message = "Error nombre no valido")
     private String nombre;
-    /*que coincidan las claves foraneas  ejemplo una a una o una a muchas o muchas a muchas*/
-    @ManyToOne 
-    private int id_region;
+    @Column(name = "apellido",nullable = false)
+    @NotEmpty
+    @NotNull
+    @Size(min = 2, max = 100, message = "Error apellido no valido")
+    private String apellido;
+    @Column(name = "sueldo",nullable = false)
+    @NotNull(message = "El sueldo no debe ser nulo")
+    @NotEmpty(message = "el sueldo no  debe ser nulo")
+    @Min(value = 0)
+    private int sueldo;
+    @ManyToOne
+    @Column(name = "id_tienda", nullable = false)
+    private Tienda id_tienda;
 }
