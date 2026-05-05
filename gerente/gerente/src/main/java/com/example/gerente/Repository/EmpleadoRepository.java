@@ -1,3 +1,5 @@
+//todos los package me dan error
+package com.example.gerente.Repository;
 package com.example.gerente.repository;
 
 import java.util.List;

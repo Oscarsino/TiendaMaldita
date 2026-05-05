@@ -1,3 +1,4 @@
+package com.example.gerente.Repository;
 package com.example.gerente.repository;
 
 public class GuiaPersonaRepository {
