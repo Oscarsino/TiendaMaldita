@@ -41,6 +41,7 @@ public class Tienda {
     @NotNull
     @Size(min = 2, max = 100, message = "Error ubicacion no valida")
     private String ubicacion;
+    /* debarible, es una fecha o es una hora */
     private Date horario_aprertura;
     @NotEmpty
     @NotNull

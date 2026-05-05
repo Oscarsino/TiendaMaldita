@@ -41,7 +41,5 @@ public class Factura {
     @OneToOne
     @Column(name = "venta",nullable = false)
     private Venta venta;
-    @OneToOne
-    @Column(name = "id_cliente",nullable = false)
-    private Cliente id_cliente;
+   
 }

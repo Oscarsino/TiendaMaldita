@@ -43,4 +43,14 @@ public class Producto {
     @ManyToOne
     @Column(name = "id_proveedor", nullable = false)
     private Proveedor id_proveedor;
+
+    /*
+    debatiblñe si se agrega o no 
+
+    descripcion
+    stock_minimo
+    marca
+    categoria
+    codigo_barra
+    */
 }

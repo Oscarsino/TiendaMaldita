@@ -26,9 +26,7 @@ public class Boleta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_boleta;
-    @ManyToOne
-    @Column(name = "id_cliente",nullable = false)
-    private Cliente id_cliente;
+    
     /*que coincidan las claves foraneas */
     @ManyToOne
     @Column(name = "id_venta",nullable = false)

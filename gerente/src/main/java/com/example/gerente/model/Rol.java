@@ -6,7 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
@@ -34,8 +34,6 @@ public class Rol {
     @NotNull
     @Size(min = 2, max = 50, message = "Error nombre no valido")
     private String nombre_rol;
-    @ManyToOne
-    @JoinColumn(name = "id_empleado", nullable = false)
-    private Empleado id_empleado;
+
 
 }

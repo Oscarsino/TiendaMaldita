@@ -1,5 +1,11 @@
 package com.example.gerente.repository;
 
-public interface TiendaRepo {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.gerente.model.Tienda;
+
+@Repository
+public interface TiendaRepo extends JpaRepository<Tienda, Integer>{
 
 }

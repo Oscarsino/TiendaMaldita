@@ -38,4 +38,10 @@ public class Venta {
     @ManyToOne
     @Column(name = "id_empleado",nullable = false)
     private Empleado id_empleado;
+
+    /*
+    debatible si falta o no
+    total 
+    estado
+    */
 }

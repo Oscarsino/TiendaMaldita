@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -48,12 +50,19 @@ public class Devolucion {
     @Min(value = 0)
     private int cantidad_devuelta;
 
-    
+    @ManyToOne
+    @Column(name = "id_empleado", nullable = false)
     private Empleado id_empleado;
+    @OneToOne
+    @Column(name = "id_detalle_venta", nullable = false)
+    private DetalleVenta id_detalle_venta;
+
+    /*
     private Cliente id_cliente;
     private Tarjeta id_tarjeta;
     private Venta id_venta;
     private Producto id_producto;
+    */
 
     
 }

@@ -45,6 +45,14 @@ public class Empleado {
     @NotEmpty(message = "el sueldo no  debe ser nulo")
     @Min(value = 0)
     private int sueldo;
+
+    @ManyToOne
+    @Column(name = "rol",nullable = false)
+    @NotEmpty
+    @NotNull
+    @Size(min = 2, max = 100, message = "Error rol no valido")
+    private Rol id_rol;
+
     @ManyToOne
     @Column(name = "id_tienda", nullable = false)
     private Tienda id_tienda;

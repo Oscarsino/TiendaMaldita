@@ -1,0 +1,10 @@
+package com.example.gerente.service;
+
+public interface ClienteService {
+    List<ClienteDTO.Response> listarCLiente();
+    ClienteDTO.Response buscarPorId (int id);
+    ClienteDTO.Response crear(ClienteDTO.Request request);
+    ClienteDTO.Response actualizar(int id, ClienteDTO.Request request);
+    void eliminar(int id);
+
+}
