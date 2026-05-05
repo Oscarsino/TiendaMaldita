@@ -597,7 +597,7 @@ INSERT INTO `tienda` (`id_tienda`, `nombre_tienda`, `ubicacion`, `horario_apertu
 (3, 'Tienda Concepción', 'Calle Barros Arana 300', '2021-03-10', 'Devolución en 30 días'),
 (4, 'Tienda Temuco', 'Av. Alemania 400', '2018-11-20', 'Solo cambios con etiqueta'),
 (5, 'Tienda Talca', 'Calle 1 Sur 500', '2022-05-05', 'No devoluciones en ofertas'),
-(6, 'Tienda Rancagua', 'Av. O\'Higgins 600', '2017-08-15', 'Cambios en 7 días'),
+(6, 'Tienda Rancagua', 'Av. O´Higgins 600', '2017-08-15', 'Cambios en 7 días'),
 (7, 'Tienda Puerto Montt', 'Av. Presidente Ibáñez 700', '2020-09-01', 'Devolución con boleta'),
 (8, 'Tienda La Serena', 'Av. Francisco de Aguirre 800', '2019-12-10', 'Cambios en 10 días'),
 (9, 'Tienda Antofagasta', 'Av. Balmaceda 900', '2021-07-20', 'No devoluciones sin empaque'),
