@@ -1,5 +1,5 @@
 package com.example.gerente.service;
-
+import java.util.List;
 public interface CuponService {
     List<CuponDTO.Reponse> listarCupon();
     List<CuponDTO.Response> buscarIdCUpon(int id_cupon);

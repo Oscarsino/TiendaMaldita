@@ -1,5 +1,5 @@
 package com.example.gerente.service;
-
+import java.util.List;
 public interface ProductoService {
     List<ProductoDTO.Response> listarProducto();
     ProductoDTo.Response buscarPorId (int id_producto);
