@@ -5,32 +5,32 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Entity
+@Table(name = "oferta")
 public class Oferta {
-    @NotNull(message = "El id no debe ser nulo")
-    @NotEmpty(message = "el id no debe ser nulo")
-    @Min(value = 0)
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "descripcion",nullable = false)
-    @NotEmpty
-    @NotNull
-    @Size(min = 2, max = 100, message = "Error descripcion no valida")
+    private int id_oferta;
+
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
-    @Column(name = "descuento",nullable = false)
-    @NotNull(message = "El descuento no debe ser nulo")
-    @NotEmpty(message = "el descuento no debe ser nulo")
-    @Min(value = 0)
-    private int descuento; // 0.1 = 10%
-    /*clavesita */
+
+    @Column(name = "descuento", nullable = false)
+    private int descuento;
+
+    // FK: id_producto -> Producto
     @ManyToOne
-    @Column(name = "id_producto",nullable = false)
+    @JoinColumn(name = "id_producto", nullable = false)
     private Producto id_producto;
 }
