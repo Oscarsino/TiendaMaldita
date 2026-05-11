@@ -1,11 +1,11 @@
-
+import com.example.gerente.model.Empleado;
 
 @RestController
 @RequestMapping("/api/empleado")
 public class EmpleadoController {
     
     @Autowired
-    private EmpleadoVentaService  empleadoServi;
+    private EmpleadoService  empleadoServi;
 
     @GetMapping
     public ResponseEntity<List<Empleado>> listar(){
