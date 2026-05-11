@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Valid
 @Entity
-@Table(name = "tirnda")
+@Table(name = "tienda")
 public class Tienda {
     @NotNull(message = "El id no debe ser nulo")
     @NotEmpty(message = "el id no debe ser nulo")
@@ -46,5 +47,7 @@ public class Tienda {
     @Size(min = 2, max = 100, message = "Error politicas no validas")
     private String politicas;
     /*clave foranea aqui o eso creo */
-    private Empleado id_empleado;
+    @OneToMany
+    @Column(name = "id_ciudad",nullable = false)
+    private Ciudad ciudad;
 }
